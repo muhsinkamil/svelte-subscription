@@ -9,5 +9,6 @@
         padding: 18px;
         background-color: rgb(37, 36, 36);
         color: white;
+        cursor: pointer;
     }
 </style>
