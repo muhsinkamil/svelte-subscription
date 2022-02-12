@@ -1,22 +1,93 @@
 <script>
-	export let name;
+	import { Headings, Button, InputWithLabel, CheckboxWithLabel } from './components'
+
+	const options = [
+		{
+			label:"I agree to the terms and conditions",
+			name: "termsAndConditions"
+		},
+		{
+			label:"Subscribe to newsletters and communications",
+			name: "newsletter"
+		},
+		{
+			label:"Subscribe to onboarding emails",
+			name: "emails"
+		}
+	]
 </script>
 
 <main>
-	<h1>
-		Hello {name}
-	</h1>
+	<div class="layout_card">
+		<div class="headings_wrapper">
+			<Headings heading="Try it now!"/>
+			<h6 class="sub_heading">Free trial, no obligation</h6>
+		</div>
+
+		<InputWithLabel 
+			label="Work email address"
+			placeholder="Enter your email address"
+			name="email"
+		/>
+
+		<div class="options_container">
+			{#each options as { label, name } (label)}
+			<CheckboxWithLabel 
+				{label}
+				{name}
+			/>
+			{/each}
+		</div>
+		
+		<Button label="Download now"></Button>
+
+		<p class="paragraph_privacy">
+			We value your privacy and you have complete control over any information submitted.
+			For more info, see our <a href="/" class="links">information policy</a>
+		</p>
+	</div>
 </main>
 
 <style>
 	main {
-		padding: 0; 
+		height: 100vh;
 		display: flex;
 		justify-content: center;
+		align-items: center;
+		background-color: rgb(226, 222, 222);
 	}
-	h1 {
-		font-size: 4rem;
-		color: red;
+	.layout_card {
+		display: flex;
+		padding: 5%;
+		flex-direction: column;
+		background-color: rgb(245, 245, 245);
+		border: 2px solid rgb(243, 237, 237);
+		box-shadow: 5px 5px rgb(238, 238, 238);
+		max-width: 500px;
+	}
+
+	.sub_heading {
+		font-size: 0.9em;
 		font-weight: 200;
+	}
+
+	.headings_wrapper {
+		padding: 0 0 1rem 0;
+	}
+
+	.options_container {
+		padding: 5px 0 20px 0;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.paragraph_privacy {
+		font-size: 0.9em;
+		padding: 20px 0 0 0;
+	}
+
+	.links {
+		text-decoration: none;
+		color: #486ef3;
 	}
 </style>
