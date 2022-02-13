@@ -1,5 +1,5 @@
 <script>
-	import { Headings, Button, InputWithLabel, CheckboxWithLabel } from './components'
+	import { Headings, Button, InputWithLabel, CheckboxWithLabel, Card } from './components'
 
 	const options = [
 		{
@@ -18,7 +18,7 @@
 </script>
 
 <main>
-	<div class="layout_card">
+	<Card>
 		<div class="headings_wrapper">
 			<Headings heading="Try it now!"/>
 			<h6 class="sub_heading">Free trial, no obligation</h6>
@@ -45,7 +45,7 @@
 			We value your privacy and you have complete control over any information submitted.
 			For more info, see our <a href="/" class="links">information policy</a>
 		</p>
-	</div>
+	</Card>
 </main>
 
 <style>
@@ -55,15 +55,6 @@
 		justify-content: center;
 		align-items: center;
 		background-color: rgb(226, 222, 222);
-	}
-	.layout_card {
-		display: flex;
-		padding: 5%;
-		flex-direction: column;
-		background-color: rgb(245, 245, 245);
-		border: 2px solid rgb(243, 237, 237);
-		box-shadow: 5px 5px rgb(238, 238, 238);
-		max-width: 500px;
 	}
 
 	.sub_heading {
