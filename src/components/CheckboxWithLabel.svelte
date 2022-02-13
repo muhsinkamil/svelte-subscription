@@ -1,11 +1,10 @@
 <script>
-    export let label;
-    export let name;
+    export let label
+    export let name
 </script>
 
-
 <label class="checkbox_container">
-    <input type="checkbox" {name}>
+    <input type="checkbox" {name} />
     <span aria-label={label}>
         {label}
     </span>

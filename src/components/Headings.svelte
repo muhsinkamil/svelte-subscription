@@ -1,5 +1,5 @@
 <script>
-   export let heading;
+    export let heading
 </script>
 
 <h3 class="headings">{heading}</h3>
