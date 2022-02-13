@@ -30,19 +30,22 @@
             <h6 class="sub_heading">Free trial, no obligation</h6>
         </div>
 
-        <InputWithLabel
-            label="Work email address"
-            placeholder="Enter your email address"
-            name="email"
-        />
+        <form>
+            <InputWithLabel
+                label="Work email address"
+                placeholder="Enter your email address"
+                name="email"
+                type="email"
+            />
 
-        <div class="options_container">
-            {#each options as { label, name } (label)}
-                <CheckboxWithLabel {label} {name} />
-            {/each}
-        </div>
+            <div class="options_container">
+                {#each options as { label, name } (label)}
+                    <CheckboxWithLabel {label} {name} />
+                {/each}
+            </div>
 
-        <Button label="Download now" />
+            <Button label="Download now" />
+        </form>
 
         <p class="paragraph_privacy">
             We value your privacy and you have complete control over any

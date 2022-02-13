@@ -2,13 +2,14 @@
     export let label
     export let name
     export let placeholder
+    export let type
 </script>
 
 <label class="input_container">
     <span aria-label={label} class="input_label">
         {label}
     </span>
-    <input type="input" {name} {placeholder} class="input_box" />
+    <input {type} {name} {placeholder} class="input_box" />
 </label>
 
 <style>
