@@ -1,5 +1,5 @@
 <script>
-    export let label;
+    export let label
 </script>
 
 <button class="button_cls">{label}</button>
@@ -10,5 +10,8 @@
         background-color: rgb(37, 36, 36);
         color: white;
         cursor: pointer;
+        width: 100%;
+        border: none;
+        font-size: 1em;
     }
 </style>
