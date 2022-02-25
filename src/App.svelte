@@ -6,60 +6,54 @@
         CheckboxWithLabel,
         Card,
     } from './components'
+    import {
+        checkboxOptions,
+        enterMailWording,
+        freetrialWording,
+        informationWording,
+        privacyWording,
+        subscribeWording,
+        tryNowWording,
+        workMailWording,
+    } from './wordings'
 
-    const options = [
-        {
-            label: 'I agree to the terms and conditions',
-            name: 'termsAndConditions',
-        },
-        {
-            label: 'Subscribe to newsletters and communications',
-            name: 'newsletter',
-        },
-        {
-            label: 'Subscribe to onboarding emails',
-            name: 'emails',
-        },
-    ]
+    const handleSubmit = () => console.log('Submitted')
 </script>
 
 <main>
     <Card>
         <div class="headings_wrapper">
-            <Headings heading="Try it now!" />
-            <h6 class="sub_heading">Free trial, no obligation</h6>
+            <Headings heading={tryNowWording} />
+            <h6 class="sub_heading">{freetrialWording}</h6>
         </div>
 
-        <form>
+        <form on:submit|preventDefault={handleSubmit}>
             <InputWithLabel
-                label="Work email address"
-                placeholder="Enter your email address"
+                label={workMailWording}
+                placeholder={enterMailWording}
                 name="email"
                 type="email"
             />
 
             <div class="options_container">
-                {#each options as { label, name } (label)}
+                {#each checkboxOptions as { label, name } (label)}
                     <CheckboxWithLabel {label} {name} />
                 {/each}
             </div>
 
-            <Button label="Download now" />
+            <Button label={subscribeWording} />
         </form>
 
         <p class="paragraph_privacy">
-            We value your privacy and you have complete control over any
-            information submitted. For more info, see our <a
-                href="/"
-                class="links">information policy</a
-            >
+            {privacyWording}
+            <a href="/" class="links">{informationWording}</a>
         </p>
     </Card>
 </main>
 
 <style>
     main {
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
