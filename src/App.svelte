@@ -17,7 +17,9 @@
         workMailWording,
     } from './wordings'
 
-    const handleSubmit = () => console.log('Submitted')
+    let emailValue = ''
+
+    const handleSubmit = (e) => console.log(emailValue)
 </script>
 
 <main>
@@ -33,6 +35,7 @@
                 placeholder={enterMailWording}
                 name="email"
                 type="email"
+                bind:value={emailValue}
             />
 
             <div class="options_container">
