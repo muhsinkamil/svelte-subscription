@@ -67,7 +67,10 @@
                 {/each}
             </div>
 
-            <Button label={subscribeWording} />
+            <Button
+                label={subscribeWording}
+                disabled={!termsAndConditionsAgreed}
+            />
         </form>
 
         <p class="paragraph_privacy">
