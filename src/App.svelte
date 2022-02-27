@@ -23,7 +23,9 @@
         termsAndConditions[0]
 
     let emailValue = ''
-    let termsAndConditionsAgreed = buildOptionGroup(termsAndConditions)
+    let { termsAndConditions: termsAndConditionsAgreed } =
+        buildOptionGroup(termsAndConditions)
+
     let selectedSubscriptions = buildOptionGroup(subscriptionOptions)
 
     const handleSubmit = (e) => {
@@ -53,9 +55,7 @@
                     label={termsAndConditionsLabel}
                     name={termsAndConditionsName}
                     optionName={termsAndConditionsName}
-                    bind:checked={termsAndConditionsAgreed[
-                        termsAndConditionsName
-                    ]}
+                    bind:checked={termsAndConditionsAgreed}
                 />
                 {#each subscriptionOptions as { label, name: optionName } (label)}
                     <CheckboxWithLabel

@@ -14,4 +14,11 @@
         border: none;
         font-size: 1em;
     }
+
+    .button_cls:hover {
+        transform: scale(1.01);
+    }
+    .button_cls:active {
+        transform: scale(0.99);
+    }
 </style>
