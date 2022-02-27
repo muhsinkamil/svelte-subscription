@@ -7,7 +7,7 @@
         Card,
     } from './components'
     import {
-        checkboxOptions,
+        subscriptionOptions,
         enterMailWording,
         freetrialWording,
         informationWording,
@@ -15,11 +15,21 @@
         subscribeWording,
         tryNowWording,
         workMailWording,
+        termsAndConditions,
     } from './wordings'
+    import { buildOptionGroup } from './helpers'
+
+    const { label: termsAndConditionsLabel, name: termsAndConditionsName } =
+        termsAndConditions[0]
 
     let emailValue = ''
+    let termsAndConditionsAgreed = buildOptionGroup(termsAndConditions)
+    let selectedSubscriptions = buildOptionGroup(subscriptionOptions)
 
-    const handleSubmit = (e) => console.log(emailValue)
+    const handleSubmit = (e) => {
+        // console.log(emailValue)
+        console.log(selectedSubscriptions)
+    }
 </script>
 
 <main>
@@ -39,8 +49,21 @@
             />
 
             <div class="options_container">
-                {#each checkboxOptions as { label, name } (label)}
-                    <CheckboxWithLabel {label} {name} />
+                <CheckboxWithLabel
+                    label={termsAndConditionsLabel}
+                    name={termsAndConditionsName}
+                    optionName={termsAndConditionsName}
+                    bind:checked={termsAndConditionsAgreed[
+                        termsAndConditionsName
+                    ]}
+                />
+                {#each subscriptionOptions as { label, name: optionName } (label)}
+                    <CheckboxWithLabel
+                        {label}
+                        name="subscriptions"
+                        {optionName}
+                        bind:checked={selectedSubscriptions[optionName]}
+                    />
                 {/each}
             </div>
 

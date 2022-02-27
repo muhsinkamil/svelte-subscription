@@ -1,5 +1,5 @@
 export {
-    checkboxOptions,
+    subscriptionOptions,
     freetrialWording,
     privacyWording,
     informationWording,
@@ -7,4 +7,5 @@ export {
     workMailWording,
     subscribeWording,
     enterMailWording,
+    termsAndConditions,
 } from './homeWordings'

@@ -1,8 +1,4 @@
-export const checkboxOptions = [
-    {
-        label: 'I agree to the terms and conditions',
-        name: 'termsAndConditions',
-    },
+export const subscriptionOptions = [
     {
         label: 'Subscribe to newsletters and communications',
         name: 'newsletters',
@@ -10,6 +6,13 @@ export const checkboxOptions = [
     {
         label: 'Subscribe to onboarding emails',
         name: 'emails',
+    },
+]
+
+export const termsAndConditions = [
+    {
+        label: 'I agree to terms and conditions',
+        name: 'termsAndConditions',
     },
 ]
 
