@@ -7,6 +7,7 @@
         Card,
         Modal,
         ThankModalContent,
+        GithubIcon,
     } from './components'
     import {
         subscriptionOptions,
@@ -38,6 +39,9 @@
 </script>
 
 <main>
+    <div class="icon-container">
+        <GithubIcon url="https://github.com/muhsinkamil/svelte-subscription" />
+    </div>
     <Card>
         <div class="headings_wrapper">
             <Headings heading={tryNowWording} />
@@ -126,5 +130,12 @@
     .links {
         text-decoration: none;
         color: #486ef3;
+    }
+
+    .icon-container {
+        position: fixed;
+        right: 2%;
+        top: 3%;
+        cursor: pointer;
     }
 </style>

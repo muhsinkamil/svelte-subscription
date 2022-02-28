@@ -5,6 +5,7 @@ import InputWithLabel from './InputWithLabel.svelte'
 import Card from './Card.svelte'
 import Modal from './Modal.svelte'
 import ThankModalContent from './ThankModalContent.svelte'
+import GithubIcon from './GithubIcon.svelte'
 
 export {
     Headings,
@@ -14,4 +15,5 @@ export {
     Card,
     Modal,
     ThankModalContent,
+    GithubIcon,
 }
