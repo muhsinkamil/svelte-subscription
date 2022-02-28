@@ -37,6 +37,8 @@
         isSubmitted = true
         console.log(selectedSubscriptions)
     }
+
+    const closeModal = () => (isSubmitted = false)
 </script>
 
 <main>
@@ -74,7 +76,7 @@
 
             <Button
                 label={subscribeWording}
-                disabled={!termsAndConditionsAgreed}
+                disabled={!termsAndConditionsAgreed || !emailValue}
             />
         </form>
 
@@ -82,8 +84,13 @@
             {privacyWording}
             <a href="/" class="links">{informationWording}</a>
         </p>
-        <Modal show={isSubmitted} okBtnText="ok">
-            <ThankModalContent />
+        <Modal
+            show={isSubmitted}
+            okBtnText="ok"
+            onOverlayClick={closeModal}
+            onOKClick={closeModal}
+        >
+            <ThankModalContent {emailValue} />
         </Modal>
     </Card>
 </main>

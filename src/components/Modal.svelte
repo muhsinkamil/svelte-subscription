@@ -2,18 +2,25 @@
     export let show = false
     export let okBtnText = ''
     export let cancelBtnText = ''
+    export let onOverlayClick = () => {}
+    export let onCancelClick = () => {}
+    export let onOKClick = () => {}
 </script>
 
 {#if show}
-    <div class="modal-overlay">
+    <div class="modal-overlay" on:click|self={onOverlayClick}>
         <div class="modal">
             <slot />
             <div class="modal-btns">
                 {#if okBtnText}
-                    <button class="btn-primary">{okBtnText}</button>
+                    <button class="btn-primary" on:click={onOKClick}
+                        >{okBtnText}</button
+                    >
                 {/if}
                 {#if cancelBtnText}
-                    <button class="btn-secondary">{cancelBtnText}</button>
+                    <button class="btn-secondary" on:click={onCancelClick}
+                        >{cancelBtnText}</button
+                    >
                 {/if}
             </div>
         </div>

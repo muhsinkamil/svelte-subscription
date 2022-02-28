@@ -5,7 +5,8 @@
 
 <h2 class="thanks-txt">{thankModalHeading}</h2>
 <div class="thanks-msg">
-    Will keep in touch at {emailValue}. Thanks for subscribing to emails
+    Will keep in touch at <span class="email-txt">{emailValue}</span>. Thanks
+    for subscribing to emails.
 </div>
 
 <style>
@@ -18,5 +19,10 @@
     .thanks-msg {
         font-size: 1em;
         padding: 5px 0;
+    }
+
+    .email-txt {
+        font-weight: 600;
+        color: rgb(182, 47, 74);
     }
 </style>
