@@ -31,4 +31,4 @@ jobs:
               run: npm run build --if-present
 
             - name: Deploy project
-              run: surge public ${{ secrets.SURGE_DOMAIN }} --token {{ secrets.SURGE_TOKEN }} && echo "visit ${{ secrets.SURGE_DOMAIN }}"
+              run: surge public ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }} && echo "visit ${{ secrets.SURGE_DOMAIN }}"
