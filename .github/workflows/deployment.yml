@@ -5,7 +5,7 @@ name: Deploy
 
 on:
     push:
-        branches: [main]
+        branches: [fix-cd-ii]
 
 jobs:
     build:
@@ -32,4 +32,3 @@ jobs:
 
             - name: Deploy project
             - run: surge public ${{ secrets.SURGE_DOMAIN }} --token {{ secrets.SURGE_TOKEN }}
-            - run: echo "Visit ${{ secrets.SURGE_DOMAIN }}"
