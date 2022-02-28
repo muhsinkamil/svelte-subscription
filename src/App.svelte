@@ -19,12 +19,10 @@
         workMailWording,
         termsAndConditions,
     } from './wordings'
-    import { buildOptionGroup } from './helpers'
+    import { buildOptionGroup, getSelectedValues } from './helpers'
 
     const { label: termsAndConditionsLabel, name: termsAndConditionsName } =
         termsAndConditions[0]
-
-    let isSubmitted = false
 
     let emailValue = ''
     let { termsAndConditions: termsAndConditionsAgreed } =
@@ -32,12 +30,10 @@
 
     let selectedSubscriptions = buildOptionGroup(subscriptionOptions)
 
-    const handleSubmit = (e) => {
-        // console.log(emailValue)
-        isSubmitted = true
-        console.log(selectedSubscriptions)
-    }
+    let isSubmitted = false
 
+    // TODO: Add validation for email onSubmit
+    const handleSubmit = (e) => (isSubmitted = true)
     const closeModal = () => (isSubmitted = false)
 </script>
 
@@ -90,7 +86,10 @@
             onOverlayClick={closeModal}
             onOKClick={closeModal}
         >
-            <ThankModalContent {emailValue} />
+            <ThankModalContent
+                {emailValue}
+                subscriptionList={getSelectedValues(selectedSubscriptions)}
+            />
         </Modal>
     </Card>
 </main>

@@ -1,12 +1,25 @@
 <script>
+    import { getCommaSeparatedElems } from '../helpers'
+
     import { thankModalHeading } from '../wordings'
     export let emailValue = ''
+    export let subscriptionList = []
+
+    const getSubscriptionWordings = () => {
+        if (!subscriptionList.length) return ''
+
+        return (
+            'Thanks for subscribing to ' +
+            getCommaSeparatedElems(subscriptionList) +
+            '.'
+        )
+    }
 </script>
 
 <h2 class="thanks-txt">{thankModalHeading}</h2>
 <div class="thanks-msg">
-    Will keep in touch at <span class="email-txt">{emailValue}</span>. Thanks
-    for subscribing to emails.
+    Will keep in touch at <span class="email-txt">{emailValue}</span>.
+    {getSubscriptionWordings()}
 </div>
 
 <style>
