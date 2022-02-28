@@ -9,3 +9,5 @@ export {
     enterMailWording,
     termsAndConditions,
 } from './homeWordings'
+
+export { modalHeading as thankModalHeading } from './thankModalWordings'

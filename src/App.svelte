@@ -5,6 +5,8 @@
         InputWithLabel,
         CheckboxWithLabel,
         Card,
+        Modal,
+        ThankModalContent,
     } from './components'
     import {
         subscriptionOptions,
@@ -22,6 +24,8 @@
     const { label: termsAndConditionsLabel, name: termsAndConditionsName } =
         termsAndConditions[0]
 
+    let isSubmitted = false
+
     let emailValue = ''
     let { termsAndConditions: termsAndConditionsAgreed } =
         buildOptionGroup(termsAndConditions)
@@ -30,6 +34,7 @@
 
     const handleSubmit = (e) => {
         // console.log(emailValue)
+        isSubmitted = true
         console.log(selectedSubscriptions)
     }
 </script>
@@ -77,6 +82,9 @@
             {privacyWording}
             <a href="/" class="links">{informationWording}</a>
         </p>
+        <Modal show={isSubmitted} okBtnText="ok">
+            <ThankModalContent />
+        </Modal>
     </Card>
 </main>
 
