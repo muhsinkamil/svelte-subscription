@@ -5,7 +5,7 @@ name: Deploy
 
 on:
     push:
-        branches: [cd-setup]
+        branches: [main]
 
 jobs:
     build:
@@ -13,9 +13,22 @@ jobs:
 
         steps:
             - uses: actions/checkout@v2
+
+            - run: echo "Set up node js"
             - name: Use Node.js version 16.13.1
               uses: actions/setup-node@v2
               with:
                   node-version: 16.13.1
                   cache: 'npm'
+
+            - name: Install dependencies
+            - run: npm install
+
+            - name: Install surge
+            - run: npm install -g surge
+
+            - name: Build project
             - run: npm run build --if-present
+
+            - name: Deploy project
+            - run: surge ./build ${{ secrets.SURGE_DOMAIN }} --token {{ secrets.SURGE_TOKEN }}
