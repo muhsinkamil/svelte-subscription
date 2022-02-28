@@ -5,7 +5,7 @@ name: Deploy
 
 on:
     push:
-        branches: [fix-cd-ii]
+        branches: [main]
 
 jobs:
     build:
