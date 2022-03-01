@@ -87,8 +87,8 @@
         <Modal
             show={isSubmitted}
             okBtnText="ok"
-            onOverlayClick={closeModal}
-            onOKClick={closeModal}
+            on:overlayClick={closeModal}
+            on:okClick={closeModal}
         >
             <ThankModalContent
                 {emailValue}

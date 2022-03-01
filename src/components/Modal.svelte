@@ -1,26 +1,34 @@
 <script>
+    import { createEventDispatcher } from 'svelte'
     export let show = false
     export let okBtnText = ''
     export let cancelBtnText = ''
-    export let onOverlayClick = () => {}
-    export let onCancelClick = () => {}
-    export let onOKClick = () => {}
+
+    //  TODO: Make a constant for possible events that the component is expecting
+    const dispatch = createEventDispatcher()
 </script>
 
 {#if show}
-    <div class="modal-overlay" on:click|self={onOverlayClick}>
+    <div class="modal-overlay" on:click|self={() => dispatch('overlayClick')}>
         <div class="modal">
             <slot />
             <div class="modal-btns">
                 {#if okBtnText}
-                    <button class="btn-primary" on:click={onOKClick}
-                        >{okBtnText}</button
+                    <button
+                        class="btn-primary"
+                        on:click={() => dispatch('okClick')}
                     >
+                        {okBtnText}
+                    </button>
                 {/if}
                 {#if cancelBtnText}
-                    <button class="btn-secondary" on:click={onCancelClick}
-                        >{cancelBtnText}</button
+                    <button
+                        class="btn-secondary"
+                        on:click={() => dispatch('cancelClick')}
                     >
+                        Cancel
+                        {cancelBtnText}
+                    </button>
                 {/if}
             </div>
         </div>
