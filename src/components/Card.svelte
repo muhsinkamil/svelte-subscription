@@ -3,6 +3,7 @@
 <style>
     .layout_card {
         display: flex;
+        margin: 5%;
         padding: 5%;
         flex-direction: column;
         background-color: rgb(245, 245, 245);

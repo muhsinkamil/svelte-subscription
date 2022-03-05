@@ -5,61 +5,102 @@
         InputWithLabel,
         CheckboxWithLabel,
         Card,
+        Modal,
+        ThankModalContent,
+        GithubIcon,
     } from './components'
+    import {
+        subscriptionOptions,
+        enterMailWording,
+        freetrialWording,
+        informationWording,
+        privacyWording,
+        subscribeWording,
+        tryNowWording,
+        workMailWording,
+        termsAndConditions,
+    } from './wordings'
+    import { buildOptionGroup, getSelectedValues } from './helpers'
 
-    const options = [
-        {
-            label: 'I agree to the terms and conditions',
-            name: 'termsAndConditions',
-        },
-        {
-            label: 'Subscribe to newsletters and communications',
-            name: 'newsletter',
-        },
-        {
-            label: 'Subscribe to onboarding emails',
-            name: 'emails',
-        },
-    ]
+    const { label: termsAndConditionsLabel, name: termsAndConditionsName } =
+        termsAndConditions[0]
+
+    let emailValue = ''
+    let { termsAndConditions: termsAndConditionsAgreed } =
+        buildOptionGroup(termsAndConditions)
+
+    let selectedSubscriptions = buildOptionGroup(subscriptionOptions)
+
+    let isSubmitted = false
+
+    // TODO: Add validation for email onSubmit
+    const handleSubmit = (e) => (isSubmitted = true)
+    const closeModal = () => (isSubmitted = false)
 </script>
 
 <main>
+    <div class="icon-container">
+        <GithubIcon url="https://github.com/muhsinkamil/svelte-subscription" />
+    </div>
     <Card>
         <div class="headings_wrapper">
-            <Headings heading="Try it now!" />
-            <h6 class="sub_heading">Free trial, no obligation</h6>
+            <Headings heading={tryNowWording} />
+            <h6 class="sub_heading">{freetrialWording}</h6>
         </div>
 
-        <form>
+        <form on:submit|preventDefault={handleSubmit}>
             <InputWithLabel
-                label="Work email address"
-                placeholder="Enter your email address"
+                label={workMailWording}
+                placeholder={enterMailWording}
                 name="email"
                 type="email"
+                bind:value={emailValue}
             />
 
             <div class="options_container">
-                {#each options as { label, name } (label)}
-                    <CheckboxWithLabel {label} {name} />
+                <CheckboxWithLabel
+                    label={termsAndConditionsLabel}
+                    name={termsAndConditionsName}
+                    optionName={termsAndConditionsName}
+                    bind:checked={termsAndConditionsAgreed}
+                />
+                {#each subscriptionOptions as { label, name: optionName } (label)}
+                    <CheckboxWithLabel
+                        {label}
+                        name="subscriptions"
+                        {optionName}
+                        bind:checked={selectedSubscriptions[optionName]}
+                    />
                 {/each}
             </div>
 
-            <Button label="Download now" />
+            <Button
+                label={subscribeWording}
+                disabled={!termsAndConditionsAgreed || !emailValue}
+            />
         </form>
 
         <p class="paragraph_privacy">
-            We value your privacy and you have complete control over any
-            information submitted. For more info, see our <a
-                href="/"
-                class="links">information policy</a
-            >
+            {privacyWording}
+            <a href="/" class="links">{informationWording}</a>
         </p>
+        <Modal
+            show={isSubmitted}
+            okBtnText="ok"
+            on:overlayClick={closeModal}
+            on:okClick={closeModal}
+        >
+            <ThankModalContent
+                {emailValue}
+                subscriptionList={getSelectedValues(selectedSubscriptions)}
+            />
+        </Modal>
     </Card>
 </main>
 
 <style>
     main {
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -89,5 +130,12 @@
     .links {
         text-decoration: none;
         color: #486ef3;
+    }
+
+    .icon-container {
+        position: fixed;
+        right: 2%;
+        top: 3%;
+        cursor: pointer;
     }
 </style>
